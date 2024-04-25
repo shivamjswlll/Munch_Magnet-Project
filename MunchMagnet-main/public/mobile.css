@@ -1,0 +1,16 @@
+.mobile{
+    position: relative;
+    border: 10px solid gray;
+    border-radius: 4px;
+    width: fit-content;
+}
+.mobile::before{
+    z-index: 101;
+    content: "";
+    width: 40%;
+    height: 25px;
+    position: absolute;
+    background-color: gray;
+    border-radius: 0 0 99999px 99999px;
+    left: 30%;
+}

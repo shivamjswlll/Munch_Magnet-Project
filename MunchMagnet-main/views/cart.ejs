@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MunchMagnet</title>
+    <link rel="shortcut icon" href="./images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="item.css" />
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/f81f718962.js"
+        crossorigin="anonymous"></script>
+    <div class="container">
+        <%- include('header.ejs', {title: " Cart"}) %>
+        <div class="list-container">
+            <%if(cart.length){%>
+            <% for (let item of cart) {let {_id,restaurant,dish} = item %>
+            <%- include('cart_card.ejs', {_id,restaurant,dish}) %>
+            <% }}else{ %>
+                <img src="./images/empty-cart.jpeg" alt="Your Cart is Empty" class="empty-img">
+            <%}%>
+        </div>
+        <%- include('cart_footer.ejs') %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<div class="menu-item">
+  <div class="item-details">
+    <span class="item-name"><%=dish.name%></span><br />
+    <span class="item-price">₹<%=dish.price%></span>
+  </div>
+  <div class="add-to-cart">
+    <form action=<%=`/items`%> method="post">
+      <input type="hidden" name="dish_id" value="<%=dish._id%>" />
+      <input type="hidden" name="restaurant_id" value="<%=_id%>" />
+      <button class="add-btn">
+        <span>Add</span>
+      </button>
+    </form>
+  </div>
+</div>

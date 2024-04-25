@@ -1,0 +1,16 @@
+<div class="menu-item">
+    <div class="item-details">
+        <span class="item-name" style="color: #DC6B19;"><%=restaurant.name%></span><br />
+        <span class="item-name"><%=dish.name%></span><br />
+        <span class="item-price">₹<%=dish.price%></span>
+    </div>
+    <div class="add-to-cart">
+      <form action=<%=`/cart`%> method="post">
+        <input type="hidden" name="cart_id" value="<%=_id%>" />
+        <button class="add-btn">
+          <span>Delete</span>
+        </button>
+      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,28 @@
+<header>
+  <div class="logo-container">
+    <img
+      src="./images/logo.png"
+      alt="Company Logo"
+    />
+    <div class="company-info">
+      <h1>
+        <% let title_now = "MunchMagnet" %>
+        <% try { %>
+          <% if (typeof title !== 'undefined') { %>
+            <% title_now = title %>
+          <% } %>
+        <% } finally { %>
+          <%= title_now %>
+        <% } %>
+      </h1>
+    </div>
+  </div>
+  <%if(user){%>
+  <a href="/profile" style="text-decoration: none;"><button>
+    <div class="profile">
+      <i class="fas fa-user"></i>
+      <span><%=user.username%></span>
+    </div></button>
+  </a>
+  <%}%>
+</header>

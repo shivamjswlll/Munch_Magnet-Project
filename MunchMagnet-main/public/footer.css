@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 2.5rem; /* Adjust footer height as needed */
+    background-color: #f0f0f0;
+    /* border-top: 1px solid #ccc; */
+    position: sticky;
+    bottom: 0;
+    right: 0;
+  }
+  
+  button {
+    background-color: #6c0345;
+    color: aliceblue;
+    border: none;
+    /* padding: 1rem; */
+    font-size: 1rem;
+    font-weight: bold;
+    height: 2.5rem;
+    cursor: pointer;
+    display: flex; /* Allow stacking icon and text */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .home-btn, .view-cart-btn {
+    width: calc(50% - 2px); /* Occupies 50% width */
+  }
+  
+  .home-btn i, .view-cart-btn i {
+    margin-right: 10px; /* Spacing between icon and text */
+    font-size: 1rem; /* Adjust icon size as needed */
+  }

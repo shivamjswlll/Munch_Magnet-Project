@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MunchMagnet</title>
+    <link rel="shortcut icon" href="./images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="item.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  </head>
+  <body>
+    <script
+      src="https://kit.fontawesome.com/f81f718962.js"
+      crossorigin="anonymous"
+    ></script>
+    <div class="container">
+      <%-include('header.ejs')%>
+      <div class="list-container">
+        <%-//include('restaurant_card.ejs',{restaurant})%> <%//}%>
+        <div id="qrcode" style="width: 90%; margin-inline: auto;"></div>
+      </div>
+      <%-include('home_footer.ejs')%>
+      <input type="hidden" id="_id" value="<%=order_id%>">
+    </div>
+
+    <script>
+        function generateQRCodeWithLogo(data, logoPath) {
+            var qr = qrcode(10,'H');
+            qr.addData(data);
+            qr.make();
+        
+            var qrImageHTML = qr.createImgTag(10);
+        
+            var qrImage = new Image();
+            qrImage.src = qrImageHTML.match(/src="([^"]*)"/)[1];
+        
+            if (logoPath) {
+                var logoImage = new Image();
+                logoImage.src = logoPath;
+        
+                logoImage.onload = function() {
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+        
+                    var qrSize = qr.getModuleCount() * 10;
+                    canvas.width = canvas.height = qrSize;
+                    
+                    // Draw QR code on canvas
+                    ctx.drawImage(qrImage, 0, 0, qrSize, qrSize);
+                    
+                    // Calculate position to center the logo
+                    var logoSize = qrSize / 4;
+                    var posX = (qrSize - logoSize) / 2;
+                    var posY = (qrSize - logoSize) / 2;
+                    
+                    // Draw logo on QR code
+                    ctx.drawImage(logoImage, posX, posY, logoSize, logoSize);
+                    canvas.setAttribute("style","width: -webkit-fill-available;");
+                    // Display final QR code with logo
+                    document.getElementById('qrcode').appendChild(canvas);
+                };
+            } else {
+                document.getElementById('qrcode').innerHTML = qrImageHTML;
+            }
+        }
+        
+        // Example usage
+        var data = document.querySelector("#_id").value;
+        var logoPath = "./images/logo.jpg";
+        console.log(data)
+        generateQRCodeWithLogo(data, logoPath);
+        </script>
+  </body>
+</html>

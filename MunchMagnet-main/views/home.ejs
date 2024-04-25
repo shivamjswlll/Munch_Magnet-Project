@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MunchMagnet</title>
+    <link rel="shortcut icon" href="./images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="header.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="item.css" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="stylesheet" href="mobile.css" /> -->
+  </head>
+  <body>
+    <script
+      src="https://kit.fontawesome.com/f81f718962.js"
+      crossorigin="anonymous"
+    ></script>
+    <div class="mobile container">
+        <%-include('header.ejs')%>
+        <div class="list-container">
+          <%for(let restaurant of restaurants){%>
+          <%-include('restaurant_card.ejs',{restaurant})%> <%}%>
+        </div>
+        <%-include('home_footer.ejs')%>
+    </div>
+
+    <script>
+      let cards = document.querySelectorAll(".restaurant-card");
+      cards.forEach((card) => {
+        _id = document.querySelector("#_id").value;
+        card.addEventListener("click", () => {
+          card.querySelector("form").submit();
+          // window.location.href = `/items/${_id}`;
+        });
+      });
+    </script>
+  </body>
+</html>

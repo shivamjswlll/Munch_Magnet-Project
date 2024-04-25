@@ -1,0 +1,20 @@
+<div class="restaurant-card">
+  
+    <div class="logo-image">
+      <h1>&nbsp;&nbsp;&nbsp;<%=restaurant.name[0].toUpperCase()%>&nbsp;&nbsp;&nbsp;</h1>
+      <!-- <img src="<%=restaurant.img_url%>" alt="Restaurant Logo" /> -->
+    </div>
+    <div class="restaurant-info">
+      <h3 class="restaurant-name"><%=restaurant.name%> <%=restaurant.address%></h3>
+      <span class="star-rating">
+        <%let i=1
+         let n = restaurant.rating%> <%while(i<=n){%>
+        <i class="fa-solid fa-star fa-beat"></i>
+        <%i++%> <%}%> <%while(i<=5){%>
+        <i class="fa-regular fa-star fa-beat"></i>
+        <%i++%> <%}%>
+      </span>
+      <p class="subheading"><%=restaurant.sub_title%></p><form action="/items" method="get">
+      <input type="hidden" name="_id" id="_id" value="<%=restaurant._id%>"></form>
+    </div>
+  </div>
